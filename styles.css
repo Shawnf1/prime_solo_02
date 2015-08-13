@@ -1,0 +1,38 @@
+body{
+    background: radial-gradient(darkslategray 25%, grey 66%, white);
+    background-repeat: no-repeat;
+    height: 100%;
+}
+h1 {
+    margin-top: 10%;
+    margin-left: 30px;
+    text-decoration: underline;
+    text-align: center;
+    color: #000054;
+}
+ul{
+    list-style-type: none;
+    display: table;
+    margin: auto;
+}
+ul li{
+    font-size: 30;
+    width: 400px;
+    padding: 10px;
+    text-align: center;
+    border: solid thin black;
+}
+ul li:nth-of-type(2n)
+{
+    background-color: silver;
+}
+ul li:nth-of-type(2n+1){
+    background-color: dimgray;
+}
+li:hover{
+    background: rgba(255, 239, 249, 0.8);
+    border: solid 4px #3734ff;
+    font-size: 35;
+    cursor: pointer;
+    color: maroon;
+}

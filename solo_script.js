@@ -1,6 +1,10 @@
 // ! ! !
 // Three Bugs
 
+// missing key (array[i]) for calculateSTI call in for loop at beginning
+// base percent in getBaseSTI shouldn't be negative (1 was being minused from result in return)
+// bonus and adjusted salary weren't getting rounded
+
 var arrayAtticus = ["Atticus", "2405", "47000", 3];
 var arrayJem = ["Jem", "62347", "63500", 4];
 var arrayBoo = ["Boo", "11435", "54000", 3];
@@ -16,9 +20,9 @@ position = document.getElementById('content');
 //Loop the array, extracting each array and writing information to the DOM
 //Note that the information is not 'clean'
 for(var i = 0; i < array.length; i++){
-	array[i] = calculateSTI(array);
+	array[i] = calculateSTI(array[i]);
  	newEl = document.createElement('li');
-	newText = document.createTextNode(array[i]);
+	newText = document.createTextNode(array[i].join(", "));
 	newEl.appendChild(newText);
 	position.appendChild(newEl);
 }
@@ -38,8 +42,8 @@ function calculateSTI(array){
   }
 
   newArray[1] = bonus;
-  newArray[2] = baseSalary * (1.0 + bonus);
-  newArray[3] = baseSalary * bonus;
+  newArray[2] = Math.round(baseSalary * (1.0 + bonus));
+  newArray[3] = Math.round(baseSalary * bonus);
   console.log(newArray[0] + " " + newArray[1] + " " + newArray[2] + " " + newArray[3]);
   return newArray;
 }
@@ -63,7 +67,7 @@ function getBaseSTI(reviewScore){
       basePercent = 0.10;
       break;
   }
-  return basePercent - 1;
+  return basePercent;
 }
 
 function getYearAdjustment(employeeNumber){
@@ -82,3 +86,12 @@ function getIncomeAdjustment(salary){
   }
   return incomeAdjustment;
 }
+
+$(document).ready(function ()
+{
+	$('body').on("click", "ul", function (e)
+	{
+		e.preventDefault();
+		alert("Derp! Employee lookup functionality hasn't been built yet. Better ask for it...");
+	});
+});
